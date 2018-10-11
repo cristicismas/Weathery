@@ -13,16 +13,20 @@ class Header extends Component {
 
   // Animate search bar.
   onSearchClick(e) {
+    const bigScreen = window.matchMedia('(min-width: 800px)');
+
     const elementWidth = e.target.style.width;
-    if (elementWidth !== '400px') {
+
+    if (elementWidth !== '400px' && bigScreen.matches) {
       e.target.style.width = '400px';
       e.target.style.cursor = 'text';
       e.target.style.paddingLeft = '25px';
       e.target.style.paddingRight = '50px';
+      
+      const submitButton = document.getElementById('search-btn');
+      submitButton.style.zIndex = 10;
     }
 
-    const submitButton = document.getElementById('search-btn');
-    submitButton.style.zIndex = 10;
   }
 
   // Search for given query
@@ -51,10 +55,12 @@ class Header extends Component {
         <form id='search-form'>
           <h1 id='header-title'>WeatherApp</h1>
 
-          <input id='search-input' type='text' onClick={this.onSearchClick} placeholder='City name, zip / postal / postcode or IP adress.' />
+          <div className='container'>
+            <input id='search-input' type='text' onClick={this.onSearchClick} placeholder='City name, zip / postal / postcode or IP adress.' />
 
-          <input type='submit' id='search-btn' value='' onClick={this.onSubmit} />
-          <Icon icon={ICONS.SEARCH} color='#333' size='40' />
+            <input type='submit' id='search-btn' value='' onClick={this.onSubmit} />
+            <Icon icon={ICONS.SEARCH} color='#333' size='40' />
+          </div>
         </form>
       </section>
     );

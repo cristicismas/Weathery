@@ -69,3 +69,69 @@
 #header .svgIcon path {
   transform: scale(2);
 }
+
+@media only screen and (max-width: 800px) {
+  #header #search-form {
+    flex-direction: column;
+  }
+
+  #header #header-title {
+    text-align: center;
+  }
+
+  #header #search-input {
+    position: relative;
+    top: auto;
+    left: 60px;
+    margin: auto;
+    margin-bottom: 30px;
+    width: 400px;
+    cursor: text;
+    padding-left: 25px;
+    padding-right: 50px;
+  }
+
+  #header #search-btn {
+    position: absolute;
+    right: -16px;
+    top: 0;
+    z-index: 10;
+  }
+
+  #header #search-form > .container {
+    margin: auto;
+    position: relative;
+    right: 40px;
+    width: auto;
+  }
+
+  #header .svgIcon {
+    position: relative;
+    left: 10px;
+    bottom: 3px;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  #header #search-input {
+    width: 350px;
+    font-size: 14px;
+  }
+
+  #header #search-input::placeholder {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 475px) {
+  #header #search-input {
+    width: 250px;
+  }
+}
+
+@media only screen and (max-width: 385px) {
+  #header #search-input {
+    width: 200px;
+  }
+}
