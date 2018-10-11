@@ -10,7 +10,7 @@
 }
 
 .card:hover {
-  margin-top: 25px;
+  box-shadow: 10px 10px 10px 0px rgba(153, 153, 153, .7);
 }
 
 .card .day-name {
@@ -38,10 +38,4 @@
   display: flex;
   justify-content: space-between;
   padding: 2px 0;
-}
-
-@media only screen and (max-width: 1075px) {
-  .card:hover {
-    margin-top: 40px;
-  }
 }
