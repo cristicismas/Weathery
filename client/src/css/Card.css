@@ -1,0 +1,47 @@
+.card {
+  background-color: #f1f1f1;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 40px 20px;
+  width: 300px;
+  height: 275px;
+  box-shadow: 10px 10px 20px 0px rgba(153, 153, 153, .7);
+  transition: all .3s;
+}
+
+.card:hover {
+  margin-top: 25px;
+}
+
+.card .day-name {
+  text-align: center;
+  margin-bottom: -5px;
+  margin-top: 4px;
+}
+
+.card .card-img {
+  display: block;
+  margin: auto;
+}
+
+.card .temp-range {
+  text-align: center;
+  margin-top: -10px;
+  font-size: 22px;
+}
+
+.card .weather-info {
+  margin: 0 15px;
+}
+
+.card .weather-info > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0;
+}
+
+@media only screen and (max-width: 1075px) {
+  .card:hover {
+    margin-top: 40px;
+  }
+}

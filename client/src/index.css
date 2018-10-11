@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  padding: 0; 
+  color: #333;
+  font-family: 'Bai Jamjuree', sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+::placeholder {
+  color: #999;
+  opacity: 1;
+}
