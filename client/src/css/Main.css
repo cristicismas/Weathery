@@ -2,6 +2,7 @@
   margin-top: 40px;
 }
 
-#main .location {
+#main h2.location {
   text-align: center;
+  font-size: 27px;
 }
