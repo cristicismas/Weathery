@@ -19,10 +19,10 @@ class Main extends Component {
     }
 
     return (
-      <section id="main">
+      <section id='main'>
         <Error error={error} />
 
-        <h2 className="location">{formattedLocation}</h2>
+        <h2 className='location'>{formattedLocation}</h2>
 
         <WeatherCards forecastWeather={forecastWeather} />
       </section>

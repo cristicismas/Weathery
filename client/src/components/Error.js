@@ -6,8 +6,8 @@ class Error extends Component {
     const { error } = this.props;
     if (error) {
       return (
-        <div className="error-container">
-          <p className="error">{error}</p>
+        <div className='error-container'>
+          <p className='error'>{error}</p>
         </div>
       );
     } else {

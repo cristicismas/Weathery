@@ -11,7 +11,7 @@ exports.getCurrentWeather = async function(req, res, next) {
       } else if (response.statusCode === 400) {
         return next({
           status: 400,
-          message: "No matching location found."
+          message: 'No matching location found.'
         });
       } else {
         const currentLocation = body.location;
@@ -50,7 +50,7 @@ exports.getForecastWeather = async function(req, res, next) {
       } else if (response.statusCode === 400) {
         return next({
           status: 400,
-          message: "No matching location found."
+          message: 'No matching location found.'
         });
       } else {
         const currentLocation = body.location;
