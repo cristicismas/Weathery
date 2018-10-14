@@ -11,12 +11,9 @@ class WeatherCards extends Component {
     };
   }
 
-  // TODO: Make default props for when data isn't available
-
   componentDidUpdate(prevProps) {
     const { forecastWeather } = this.props;
 
-    // TODO: Make an object in which to put all this data, then add the object to this.state.
     let days = [];
 
     if (prevProps.forecastWeather !== forecastWeather) {
