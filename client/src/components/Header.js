@@ -53,7 +53,7 @@ class Header extends Component {
     return (
       <section id='header'>
         <form id='search-form'>
-          <h1 id='header-title'>WeatherApp</h1>
+          <h1 id='header-title'>Weathery</h1>
 
           <div className='container'>
             <input id='search-input' type='text' onClick={this.onSearchClick} placeholder='City name, zip / postal / postcode or IP adress.' />
