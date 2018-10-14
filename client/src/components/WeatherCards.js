@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Card from './Card';
 import '../css/WeatherCard.css';
 
+import { getDayName } from '../services/dayName.js';
+
 class WeatherCards extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,7 @@ class WeatherCards extends Component {
       for (let i = 1; i < 8; i++) {
         // Get day.
         const currentDate = forecastWeather[i].date;
-        const dayName = this.getDayName(currentDate);
+        const dayName = getDayName(currentDate);
 
         // Get weather info.
         const minTemp = forecastWeather[i].mintemp_c;
@@ -52,11 +54,6 @@ class WeatherCards extends Component {
 
       this.setState({ days });
     }
-  }
-
-  getDayName(dateStr, locale) {
-    var date = new Date(dateStr);
-    return date.toLocaleDateString(locale, { weekday: 'long' });        
   }
 
   render() {
