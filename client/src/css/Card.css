@@ -10,7 +10,7 @@
 }
 
 .card:hover {
-  box-shadow: 10px 10px 10px 0px rgba(153, 153, 153, .7);
+  box-shadow: 10px 10px 8px 0px rgba(153, 153, 153, .7);
 }
 
 .card .day-name {
