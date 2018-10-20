@@ -20,7 +20,14 @@ class Map extends Component {
       defaultLocation: lastLocation || 'Paris'
     };
 
+    this.setCoordinatesByLocation = this.setCoordinatesByLocation.bind(this);
     this.onMapClick = this.onMapClick.bind(this);
+  }
+
+  // TODO: fix bug where after refresh coordinates are the same (make a componentDidMount where you are resetting coordinates based on current location. Also make getting coords a function).
+  componentDidMount() {
+    const currentCity = localStorage.getItem('lastLocation');
+    this.setCoordinatesByLocation(currentCity);
   }
 
   componentDidUpdate(prevProps) {
@@ -31,33 +38,39 @@ class Map extends Component {
     const currentCity = forecastWeather.length ? forecastWeather[0].city : defaultLocation;
 
     if (prevCity !== currentCity) {
-      const geocoder = new google.maps.Geocoder();
+      this.setCoordinatesByLocation(currentCity);
+      console.log(parseFloat(localStorage.getItem('lastLat')));
+      console.log(parseFloat(localStorage.getItem('lastLng')));
+    }
+  }
+
+  setCoordinatesByLocation(location) {
+    const geocoder = new google.maps.Geocoder();
       
-      // Set latitude and longitude for given city name.
-      geocoder.geocode({ 'address': currentCity }, (results, status) => {
-        if (status === google.maps.GeocoderStatus.OK) {
-          const newLat = results[0].geometry.location.lat();
-          const newLng = results[0].geometry.location.lng();
+    // Set latitude and longitude for given city name.
+    geocoder.geocode({ 'address': location }, (results, status) => {
+      if (status === google.maps.GeocoderStatus.OK) {
+        const newLat = results[0].geometry.location.lat();
+        const newLng = results[0].geometry.location.lng();
 
 
-          localStorage.setItem('lastLocation', currentCity);
-          localStorage.setItem('lastLat', newLat);
-          localStorage.setItem('lastLng', newLng);
+        localStorage.setItem('lastLocation', location);
+        localStorage.setItem('lastLat', newLat);
+        localStorage.setItem('lastLng', newLng);
 
-          this.setState({ lat: newLat, lng: newLng });
+        this.setState({ lat: newLat, lng: newLng });
 
-          // Remove error on a successful search.
+        // Remove error on a successful search.
+        this.props.changeGlobalState('error', null);
+      } else {
+        // Sometimes google maps' api gives ZERO_RESULTS even when it finds results, so ignore this error.
+        if (status === 'ZERO_RESULTS') {
           this.props.changeGlobalState('error', null);
         } else {
-          // Sometimes google maps' api gives ZERO_RESULTS even when it finds results, so ignore this error.
-          if (status === 'ZERO_RESULTS') {
-            this.props.changeGlobalState('error', null);
-          } else {
-            this.props.changeGlobalState('error', status);
-          }
+          this.props.changeGlobalState('error', status);
         }
-      });
-    }
+      }
+    });
   }
 
   shouldComponentUpdate(nextProps) {
