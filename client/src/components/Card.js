@@ -10,7 +10,7 @@ class Card extends Component {
         <h3 className='day-name'>{day}</h3>
         <img className='card-img' src={conditionIconUrl} alt={condition} />
 
-        <h3 className='temp-range'>{minTemp}&#176; - {maxTemp}&#176;</h3>
+        <h3 className='temp-range'>{minTemp}&#176; / {maxTemp}&#176;</h3>
 
         <div className='weather-info'>
           <div className='wind'><span>Wind:</span> <span className='weather-value'>{wind} kmh</span></div>
