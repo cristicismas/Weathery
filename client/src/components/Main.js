@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Error from './Error';
 import WeatherCards from './WeatherCards';
 import TemperatureChart from './TemperatureChart';
+import Map from './Map';
 import '../css/Main.css';
 
 
@@ -39,9 +40,9 @@ class Main extends Component {
 
         <div className='flex-container'>
           <TemperatureChart forecastWeather={forecastWeather} />
-
-          <div></div>
+          <Map changeGlobalState={this.props.changeGlobalState} forecastWeather={forecastWeather} />
         </div>
+
       </section>
     );
   }
