@@ -24,7 +24,6 @@ class Map extends Component {
     this.onMapClick = this.onMapClick.bind(this);
   }
 
-  // TODO: fix bug where after refresh coordinates are the same (make a componentDidMount where you are resetting coordinates based on current location. Also make getting coords a function).
   componentDidMount() {
     const currentCity = localStorage.getItem('lastLocation');
     this.setCoordinatesByLocation(currentCity);
@@ -39,8 +38,6 @@ class Map extends Component {
 
     if (prevCity !== currentCity) {
       this.setCoordinatesByLocation(currentCity);
-      console.log(parseFloat(localStorage.getItem('lastLat')));
-      console.log(parseFloat(localStorage.getItem('lastLng')));
     }
   }
 
