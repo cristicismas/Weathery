@@ -68,7 +68,7 @@ class Header extends Component {
           <h1 id='header-title'>Weathery</h1>
 
           <div className='container'>
-            <input id='search-input' type='text' onClick={this.onSearchClick} placeholder='City name, zip / postal / postcode or IP adress.' />
+            <input id='search-input' type='text' onClick={this.onSearchClick} placeholder='City name, zip / postal / postcode or IP address.' />
 
             <input type='submit' id='search-btn' value='' onClick={this.onSubmit} />
             <Icon icon={ICONS.SEARCH} color='#333' size='40' />
