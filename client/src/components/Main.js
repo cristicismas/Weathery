@@ -40,7 +40,7 @@ class Main extends Component {
 
         <div className='flex-container'>
           <TemperatureChart forecastWeather={forecastWeather} />
-          <Map changeGlobalState={this.props.changeGlobalState} forecastWeather={forecastWeather} />
+          <Map changeGlobalState={this.props.changeGlobalState} forecastWeather={forecastWeather} {...this.props} />
         </div>
 
       </section>

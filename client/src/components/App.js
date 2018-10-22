@@ -3,7 +3,10 @@ import Header from './Header';
 import Main from './Main';
 import '../css/App.css';
 
-import { apiCall } from '../services/api.js';
+import { DEFAULTS } from '../constants/Defaults.js';
+
+import { fetchForecastWeather } from '../services/forecastWeather.js';
+import { setCoordinatesByLocation } from '../services/coordinates.js';
 
 class App extends Component {
   constructor(props) {
@@ -13,14 +16,15 @@ class App extends Component {
       error: '',
       userIp: '',
       forecastWeather: [],
+      lat: DEFAULTS.LAT,
+      lng: DEFAULTS.LNG
     };
 
     this.changeGlobalState = this.changeGlobalState.bind(this);
-    this.fetchForecastWeather = this.fetchForecastWeather.bind(this);
   }
 
   componentDidMount() {
-    let defaultQuery = 'Paris';
+    let defaultQuery = DEFAULTS.LOCATION;
 
     const ipRegex = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
     const userIp = localStorage.getItem('userIp');
@@ -30,31 +34,46 @@ class App extends Component {
       this.setState({ userIp });
     }
 
-    this.fetchForecastWeather(defaultQuery);
-  }
-
-  changeGlobalState(newItemIdentifier, newItem) {
-    this.setState({ [newItemIdentifier]: newItem });
-  }
-
-  fetchForecastWeather(query) {
-    apiCall('get', `forecast_weather/${query}`)
-      .then(res => {
-        this.setState({ forecastWeather: res });
-      })
-      .catch(err => {
-        this.setState({ error: err.message });
+    fetchForecastWeather(defaultQuery).then(forecastWeather => {
+      const newLocation = Object.values(forecastWeather[0]).join(', ');
+      
+      setCoordinatesByLocation(newLocation, this).then(coordinates => {
+        this.setState({ 
+          forecastWeather: forecastWeather, 
+          lat: coordinates.newLat,
+          lng: coordinates.newLng,
+          error: ''
+        });
       });
+    }).catch(err => {
+      this.setState({ error: err });
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { forecastWeather } = this.state;
+
+    const prevLocation = prevState.forecastWeather.length ? Object.values(prevState.forecastWeather[0]).join(', ') : DEFAULTS.LOCATION;
+    const currentLocation = forecastWeather.length ? Object.values(forecastWeather[0]).join(', ') : DEFAULTS.LOCATION;
+
+    if (prevLocation !== currentLocation) {
+      this.forceUpdate();
+    }
+  }
+
+  changeGlobalState(itemIdentifier, newItem) {
+    this.setState({ [itemIdentifier]: newItem });
   }
 
   render() {
     return (
       <div className='App'>
         <Header 
-          changeGlobalState={this.changeGlobalState}
-          fetchForecastWeather={this.fetchForecastWeather} />
+          changeGlobalState={this.changeGlobalState} />
 
-        <Main changeGlobalState={this.changeGlobalState} {...this.state} />
+        <Main 
+          changeGlobalState={this.changeGlobalState} 
+          {...this.state} />
       </div>
     );
   }

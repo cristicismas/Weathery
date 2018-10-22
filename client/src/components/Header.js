@@ -4,6 +4,9 @@ import '../css/Header.css';
 
 import { ICONS } from '../constants/Icons.js';
 
+import { fetchForecastWeather } from '../services/forecastWeather.js';
+import { setCoordinatesByLocation } from '../services/coordinates.js';
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +29,6 @@ class Header extends Component {
       const submitButton = document.getElementById('search-btn');
       submitButton.style.zIndex = 10;
     }
-
   }
 
   // Search for given query
@@ -37,10 +39,20 @@ class Header extends Component {
     if (searchInput.value.trim()) {
       const searchQuery = searchInput.value;
 
-      this.props.fetchForecastWeather(searchQuery);
+      // Fetch weather by new query.
+      fetchForecastWeather(searchQuery).then(forecastWeather => {
+        const newLocation = Object.values(forecastWeather[0]).join(', ');
 
-      // Reset error.
-      this.props.changeGlobalState('error', '');
+        // Set location coordinates in global state.
+        setCoordinatesByLocation(newLocation, this.props).then(coordinates => {
+          this.props.changeGlobalState('forecastWeather', forecastWeather);
+          this.props.changeGlobalState('lat', coordinates.newLat);
+          this.props.changeGlobalState('lng', coordinates.newLng);
+  
+          // Reset error.
+          this.props.changeGlobalState('error', '');
+        });
+      });
 
       // Reset Input Field.
       searchInput.value = '';
