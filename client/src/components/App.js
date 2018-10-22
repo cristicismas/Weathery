@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Main from './Main';
+import Footer from './Footer';
 import '../css/App.css';
 
 import { DEFAULTS } from '../constants/Defaults.js';
@@ -74,6 +75,8 @@ class App extends Component {
         <Main 
           changeGlobalState={this.changeGlobalState} 
           {...this.state} />
+
+        <Footer />
       </div>
     );
   }
