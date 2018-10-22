@@ -65,7 +65,7 @@ class Map extends Component {
 
         this.forceUpdate();
       });
-    });
+    }).catch(err => this.props.changeGlobalState('error', err));
   }
 
   render() {

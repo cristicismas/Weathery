@@ -52,7 +52,7 @@ class Header extends Component {
           // Reset error.
           this.props.changeGlobalState('error', '');
         });
-      });
+      }).catch(err => this.props.changeGlobalState('error', err));
 
       // Reset Input Field.
       searchInput.value = '';
