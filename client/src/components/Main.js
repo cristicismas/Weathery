@@ -7,15 +7,6 @@ import '../css/Main.css';
 
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      days: [],
-      temperatures: []
-    };
-  }
-
   render() {
     const { error, forecastWeather } = this.props;
     
