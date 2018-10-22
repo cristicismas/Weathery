@@ -7,9 +7,6 @@
 # testing
 /coverage
 
-# production
-/client/build
-
 # misc
 /client/.vscode/
 /server/.env
