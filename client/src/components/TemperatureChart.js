@@ -14,21 +14,21 @@ class TemperatureChart extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { forecastWeather } = this.props;
+    const { formattedWeather } = this.props;
 
     let days = [];
     let temperatures = [];
 
-    if (prevProps.forecastWeather !== forecastWeather) {
+    if (prevProps.formattedWeather !== formattedWeather) {
 
-      // Starts from 1 because forecastWeather[0] has location info.
-      for (let i = 1; i < 8; i++) {
+      // Starts from 1 because formattedWeather[0] has location info.
+      for (let i = 0; i < formattedWeather.length; i++) {
         // Get day.
-        const currentDate = forecastWeather[i].date;
+        const currentDate = formattedWeather[i].date;
         const dayName = getDayName(currentDate);
 
         // Get temperature.
-        const avgTemp = forecastWeather[i].avgtemp_c;
+        const avgTemp = formattedWeather[i].avgtemp;
 
         days.push(dayName);
         temperatures.push(avgTemp);
