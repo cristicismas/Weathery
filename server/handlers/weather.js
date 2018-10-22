@@ -27,14 +27,18 @@ exports.getForecastWeather = async function(req, res, next) {
         for (let currentDayIndex = 0; currentDayIndex < 7; currentDayIndex++) {
           const currentDay = body.forecast.forecastday[currentDayIndex].day;
 
+          // Limit the precision to 2 and recalculate averages because the weather api has wrong values.
+          const celsiusAvg = ((currentDay.maxtemp_c + currentDay.mintemp_c) / 2).toFixed(2);
+          const fahrenheitAvg = ((currentDay.maxtemp_f + currentDay.mintemp_f) / 2).toFixed(2);
+
           const currentLoopData = {
             date: body.forecast.forecastday[currentDayIndex].date,
             maxtemp_c: currentDay.maxtemp_c,
             mintemp_c: currentDay.mintemp_c,
             maxtemp_f: currentDay.maxtemp_f,
             mintemp_f: currentDay.mintemp_f,
-            avgtemp_c: currentDay.avgtemp_c,
-            avgtemp_f: currentDay.avgtemp_f,
+            avgtemp_c: celsiusAvg,
+            avgtemp_f: fahrenheitAvg,
             wind_kph: currentDay.maxwind_kph,
             wind_mph: currentDay.maxwind_mph,
             precip_mm: currentDay.totalprecip_mm,
