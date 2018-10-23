@@ -59,24 +59,24 @@ class Main extends Component {
       if (isMetric) {
         formattedWeather.push({
           date: currentLoopWeather.date,
-          mintemp: currentLoopWeather.mintemp_c,
-          maxtemp: currentLoopWeather.maxtemp_c,
+          mintemp: currentLoopWeather.mintemp_c + ' C',
+          maxtemp: currentLoopWeather.maxtemp_c + ' C',
           avgtemp: currentLoopWeather.avgtemp_c,
-          wind: currentLoopWeather.wind_kph,
-          precip: currentLoopWeather.precip_mm,
-          humidity: currentLoopWeather.avghumidity,
+          wind: currentLoopWeather.wind_kph + ' kph',
+          precip: currentLoopWeather.precip_mm + ' mm',
+          humidity: currentLoopWeather.avghumidity + ' %',
           condition: currentLoopWeather.condition,
           condition_icon: currentLoopWeather.condition_icon
         });
       } else {
         formattedWeather.push({
           date: currentLoopWeather.date,
-          mintemp: currentLoopWeather.mintemp_f,
-          maxtemp: currentLoopWeather.maxtemp_f,
+          mintemp: currentLoopWeather.mintemp_f + ' F',
+          maxtemp: currentLoopWeather.maxtemp_f + ' F',
           avgtemp: currentLoopWeather.avgtemp_f,
-          wind: currentLoopWeather.wind_mph,
-          precip: currentLoopWeather.precip_in,
-          humidity: currentLoopWeather.avghumidity,
+          wind: currentLoopWeather.wind_mph + ' mph',
+          precip: currentLoopWeather.precip_in + ' in',
+          humidity: currentLoopWeather.avghumidity + ' %',
           condition: currentLoopWeather.condition,
           condition_icon: currentLoopWeather.condition_icon
         });

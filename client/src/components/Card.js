@@ -13,9 +13,9 @@ class Card extends Component {
         <h3 className='temp-range'>{minTemp}&#176; / {maxTemp}&#176;</h3>
 
         <div className='weather-info'>
-          <div className='wind'><span>Wind:</span> <span className='weather-value'>{wind} kmh</span></div>
-          <div className='precip'><span>Precipitations:</span> <span className='weather-value'>{precip} mm</span></div>
-          <div className='hum'><span>Humidity:</span> <span className='weather-value'>{humidity} %</span></div>
+          <div className='wind'><span>Wind:</span> <span className='weather-value'>{wind}</span></div>
+          <div className='precip'><span>Precipitations:</span> <span className='weather-value'>{precip}</span></div>
+          <div className='hum'><span>Humidity:</span> <span className='weather-value'>{humidity}</span></div>
         </div>
       </div>
     );
