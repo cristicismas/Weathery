@@ -1,13 +1,13 @@
 {
-  "main.css": "/static/css/main.18a00eac.chunk.css",
-  "main.js": "/static/js/main.a5f0e669.chunk.js",
-  "main.js.map": "/static/js/main.a5f0e669.chunk.js.map",
-  "static/js/1.0ce163a4.chunk.js": "/static/js/1.0ce163a4.chunk.js",
-  "static/js/1.0ce163a4.chunk.js.map": "/static/js/1.0ce163a4.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "static/css/main.18a00eac.chunk.css.map": "/static/css/main.18a00eac.chunk.css.map",
-  "index.html": "/index.html",
-  "precache-manifest.d6fceae1e464a46cf4c27f5da10c2de7.js": "/precache-manifest.d6fceae1e464a46cf4c27f5da10c2de7.js",
-  "service-worker.js": "/service-worker.js"
+  "main.css": "/weathery/static/css/main.18a00eac.chunk.css",
+  "main.js": "/weathery/static/js/main.54e3cc80.chunk.js",
+  "main.js.map": "/weathery/static/js/main.54e3cc80.chunk.js.map",
+  "static/js/1.7bda5bba.chunk.js": "/weathery/static/js/1.7bda5bba.chunk.js",
+  "static/js/1.7bda5bba.chunk.js.map": "/weathery/static/js/1.7bda5bba.chunk.js.map",
+  "runtime~main.js": "/weathery/static/js/runtime~main.339e1877.js",
+  "runtime~main.js.map": "/weathery/static/js/runtime~main.339e1877.js.map",
+  "static/css/main.18a00eac.chunk.css.map": "/weathery/static/css/main.18a00eac.chunk.css.map",
+  "index.html": "/weathery/index.html",
+  "precache-manifest.f3a00c96f41acdecffbaee97f8306610.js": "/weathery/precache-manifest.f3a00c96f41acdecffbaee97f8306610.js",
+  "service-worker.js": "/weathery/service-worker.js"
 }
