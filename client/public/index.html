@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://api.ipify.org/ https://maps.googleapis.com/ https://maps.googleapis.com/">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://api.ipify.org/ https://maps.googleapis.com/">
 
     <meta charset="utf-8">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
@@ -23,16 +23,8 @@
     -->
     <title>Weathery</title>
     <link href="https://fonts.googleapis.com/css?family=Bai+Jamjuree" rel="stylesheet"> 
-
-    <!-- Get user ip to find user location -->
-    <script type="application/javascript">
-      function getIP(json) {
-        localStorage.setItem('userIp', json.ip);
-      }
-    </script>
     
     <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYGAkeDkpAFR4l3bZ9x3BdTwXGlJrHQcI"></script>
-    <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
   </head>
   <body>
     <noscript>

@@ -9,6 +9,8 @@ import { DEFAULTS } from '../constants/Defaults.js';
 import { fetchForecastWeather } from '../services/forecastWeather.js';
 import { setCoordinatesByLocation } from '../services/coordinates.js';
 
+import axios from 'axios';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +24,12 @@ class App extends Component {
     };
 
     this.changeGlobalState = this.changeGlobalState.bind(this);
+  }
+
+  componentWillMount() {
+    axios.get(`https://api.ipify.org?format=json`).then(json => {
+      localStorage.setItem('userIp', json.data.ip);
+    });
   }
 
   componentDidMount() {
