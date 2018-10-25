@@ -14,7 +14,9 @@ class Map extends Component {
   }
 
   componentDidMount() {
-    setCoordinatesByLocation(DEFAULTS.LOCATION, this.props).then(coordinates => {
+    const defaultLocation = localStorage.getItem('lastLocation') || DEFAULTS.LOCATION;
+
+    setCoordinatesByLocation(defaultLocation, this.props).then(coordinates => {
       this.props.changeGlobalState('lat', coordinates.newLat);
       this.props.changeGlobalState('lng', coordinates.newLng);
     });
@@ -22,9 +24,10 @@ class Map extends Component {
 
   componentDidUpdate(prevProps) {
     const { forecastWeather } = this.props;
+    const defaultLocation = localStorage.getItem('lastLocation') || DEFAULTS.LOCATION;
 
-    const prevLocation = prevProps.forecastWeather.length ? Object.values(prevProps.forecastWeather[0]).join(', ') : DEFAULTS.LOCATION;
-    const currentLocation = forecastWeather.length ? Object.values(forecastWeather[0]).join(', ') : DEFAULTS.LOCATION;
+    const prevLocation = prevProps.forecastWeather.length ? Object.values(prevProps.forecastWeather[0]).join(', ') : defaultLocation;
+    const currentLocation = forecastWeather.length ? Object.values(forecastWeather[0]).join(', ') : defaultLocation;
 
     if (prevLocation !== currentLocation) {
       setCoordinatesByLocation(currentLocation, this.props).then(coordinates => {
@@ -37,9 +40,10 @@ class Map extends Component {
 
   shouldComponentUpdate(nextProps) {
     const { forecastWeather } = this.props;
+    const defaultLocation = localStorage.getItem('lastLocation') || DEFAULTS.LOCATION;
     
-    const currentCity = forecastWeather.length ? forecastWeather[0].city : DEFAULTS.LOCATION;
-    const nextCity = nextProps.forecastWeather.length ? nextProps.forecastWeather[0].city : DEFAULTS.LOCATION;
+    const currentCity = forecastWeather.length ? forecastWeather[0].city : defaultLocation;
+    const nextCity = nextProps.forecastWeather.length ? nextProps.forecastWeather[0].city : defaultLocation;
 
     if (currentCity === nextCity) {
       return false;
@@ -54,6 +58,7 @@ class Map extends Component {
 
     fetchForecastWeather(`${newLat},${newLng}`).then(forecastWeather => {
       const newLocation = Object.values(forecastWeather[0]).join(', ');
+      localStorage.setItem('lastLocation', newLocation);
       
       setCoordinatesByLocation(newLocation, this.props).then(coordinates => {
         this.props.changeGlobalState('forecastWeather', forecastWeather);

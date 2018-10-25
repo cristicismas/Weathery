@@ -33,14 +33,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let defaultQuery = DEFAULTS.LOCATION;
+    let defaultQuery = localStorage.getItem('lastLocation') || DEFAULTS.LOCATION;
 
     const ipRegex = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
     const userIp = localStorage.getItem('userIp');
 
     if (userIp && ipRegex.test(userIp)) {
       defaultQuery = userIp;
-      this.setState({ userIp });
     }
 
     fetchForecastWeather(defaultQuery).then(forecastWeather => {
@@ -61,9 +60,10 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { forecastWeather } = this.state;
+    const defaultLocation = localStorage.getItem('lastLocation') || DEFAULTS.LOCATION;
 
-    const prevLocation = prevState.forecastWeather.length ? Object.values(prevState.forecastWeather[0]).join(', ') : DEFAULTS.LOCATION;
-    const currentLocation = forecastWeather.length ? Object.values(forecastWeather[0]).join(', ') : DEFAULTS.LOCATION;
+    const prevLocation = prevState.forecastWeather.length ? Object.values(prevState.forecastWeather[0]).join(', ') : defaultLocation;
+    const currentLocation = forecastWeather.length ? Object.values(forecastWeather[0]).join(', ') : defaultLocation;
 
     if (prevLocation !== currentLocation) {
       this.forceUpdate();

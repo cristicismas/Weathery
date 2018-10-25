@@ -42,6 +42,7 @@ class Header extends Component {
       // Fetch weather by new query.
       fetchForecastWeather(searchQuery).then(forecastWeather => {
         const newLocation = Object.values(forecastWeather[0]).join(', ');
+        localStorage.setItem('lastLocation', newLocation);
 
         // Set location coordinates in global state.
         setCoordinatesByLocation(newLocation, this.props).then(coordinates => {
