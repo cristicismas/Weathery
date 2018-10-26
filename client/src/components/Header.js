@@ -34,6 +34,9 @@ class Header extends Component {
   // Search for given query
   onSubmit(e) {
     e.preventDefault();
+
+    this.props.changeGlobalState('isDataFetched', false);
+
     const searchInput = document.getElementById('search-input');
 
     if (searchInput.value.trim()) {
@@ -49,11 +52,18 @@ class Header extends Component {
           this.props.changeGlobalState('forecastWeather', forecastWeather);
           this.props.changeGlobalState('lat', coordinates.newLat);
           this.props.changeGlobalState('lng', coordinates.newLng);
+          this.props.changeGlobalState('isDataFetched', true);
   
           // Reset error.
           this.props.changeGlobalState('error', '');
+        }).catch(err => {
+          this.props.changeGlobalState('error', err);
+          this.props.changeGlobalState('isDataFetched', true);
         });
-      }).catch(err => this.props.changeGlobalState('error', err));
+      }).catch(err => {
+        this.props.changeGlobalState('error', err);
+        this.props.changeGlobalState('isDataFetched', true);
+      });
 
       // Reset Input Field.
       searchInput.value = '';

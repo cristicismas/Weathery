@@ -10,6 +10,7 @@ import { fetchForecastWeather } from '../services/forecastWeather.js';
 import { setCoordinatesByLocation } from '../services/coordinates.js';
 
 import axios from 'axios';
+import LoadingScreen from './LoadingScreen';
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +21,8 @@ class App extends Component {
       userIp: '',
       forecastWeather: [],
       lat: DEFAULTS.LAT,
-      lng: DEFAULTS.LNG
+      lng: DEFAULTS.LNG,
+      isDataFetched: false
     };
 
     this.changeGlobalState = this.changeGlobalState.bind(this);
@@ -50,12 +52,13 @@ class App extends Component {
           forecastWeather: forecastWeather, 
           lat: coordinates.newLat,
           lng: coordinates.newLng,
-          error: ''
+          error: '', 
+          isDataFetched: true
         });
-      });
+      }).catch(err => this.setState({ error: err, isDataFetched: true }));
     }).catch(err => {
-      this.setState({ error: err });
-    })
+      this.setState({ error: err, isDataFetched: true });
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -75,8 +78,16 @@ class App extends Component {
   }
 
   render() {
+    const { isDataFetched } = this.state;
+
     return (
       <div className='App'>
+        {
+          !isDataFetched ?
+          <LoadingScreen /> :
+          null
+        }
+
         <Header 
           changeGlobalState={this.changeGlobalState} />
 

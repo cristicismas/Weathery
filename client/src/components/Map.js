@@ -15,10 +15,15 @@ class Map extends Component {
 
   componentDidMount() {
     const defaultLocation = localStorage.getItem('lastLocation') || DEFAULTS.LOCATION;
+    this.props.changeGlobalState('isDataFetched', false);
 
     setCoordinatesByLocation(defaultLocation, this.props).then(coordinates => {
       this.props.changeGlobalState('lat', coordinates.newLat);
       this.props.changeGlobalState('lng', coordinates.newLng);
+      this.props.changeGlobalState('isDataFetched', true);
+    }).catch(err => {
+      this.props.changeGlobalState('error', err);
+      this.props.changeGlobalState('isDataFetched', true);
     });
   }
 
@@ -30,10 +35,16 @@ class Map extends Component {
     const currentLocation = forecastWeather.length ? Object.values(forecastWeather[0]).join(', ') : defaultLocation;
 
     if (prevLocation !== currentLocation) {
+      this.props.changeGlobalState('isDataFetched', false);
+
       setCoordinatesByLocation(currentLocation, this.props).then(coordinates => {
         this.props.changeGlobalState('lat', coordinates.newLat);
         this.props.changeGlobalState('lng', coordinates.newLng);
+        this.props.changeGlobalState('isDataFetched', true);
         this.forceUpdate();
+      }).catch(err => {
+        this.props.changeGlobalState('error', err);
+        this.props.changeGlobalState('isDataFetched', true);
       });
     }
   }
@@ -53,6 +64,8 @@ class Map extends Component {
   }
 
   onMapClick(e) {
+    this.props.changeGlobalState('isDataFetched', false);
+
     const newLat = e.latLng.lat();
     const newLng = e.latLng.lng();
 
@@ -64,13 +77,20 @@ class Map extends Component {
         this.props.changeGlobalState('forecastWeather', forecastWeather);
         this.props.changeGlobalState('lat', coordinates.newLat);
         this.props.changeGlobalState('lng', coordinates.newLng);
+        this.props.changeGlobalState('isDataFetched', true);
 
         // Reset error.
         this.props.changeGlobalState('error', '');
 
         this.forceUpdate();
+      }).catch(err => {
+        this.props.changeGlobalState('error', err);
+        this.props.changeGlobalState('isDataFetched', true);
       });
-    }).catch(err => this.props.changeGlobalState('error', err));
+    }).catch(err => {
+      this.props.changeGlobalState('error', err);
+      this.props.changeGlobalState('isDataFetched', true);
+    });
   }
 
   render() {

@@ -19,7 +19,7 @@ export function setCoordinatesByLocation(location, contextLocation) {
         if (status === 'ZERO_RESULTS') {
           contextLocation.changeGlobalState('error', null);
         } else {
-          contextLocation.changeGlobalState('error', status);
+          return reject(status);
         }
       }
     });
