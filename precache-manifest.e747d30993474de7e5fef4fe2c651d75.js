@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/weathery/static/css/main.c9fa3ff1.chunk.css"
   },
   {
-    "revision": "c9d5b8cff5fbbb1f6413b63037a7d24d",
+    "revision": "ae04e75ca0dbbba4ddc5427972001282",
     "url": "/weathery/index.html"
   }
 ];
