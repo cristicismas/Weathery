@@ -69,6 +69,7 @@ class Header extends Component {
       searchInput.value = '';
     } else {
       this.props.changeGlobalState('error', 'Please write something in the search bar before attempting to search.');
+      this.props.changeGlobalState('isDataFetched', true);
     }
   }
 
