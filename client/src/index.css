@@ -7,6 +7,11 @@ body {
   min-height: 100vh;
 }
 
+* {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 ::placeholder {
   color: #999;
   opacity: 1;
