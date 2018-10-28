@@ -1,13 +1,13 @@
 {
-  "main.css": "/weathery/static/css/main.e2bb7a5e.chunk.css",
-  "main.js": "/weathery/static/js/main.4c79f207.chunk.js",
-  "main.js.map": "/weathery/static/js/main.4c79f207.chunk.js.map",
+  "main.css": "/weathery/static/css/main.805b77cb.chunk.css",
+  "main.js": "/weathery/static/js/main.91f9e376.chunk.js",
+  "main.js.map": "/weathery/static/js/main.91f9e376.chunk.js.map",
   "static/js/1.b74d208e.chunk.js": "/weathery/static/js/1.b74d208e.chunk.js",
   "static/js/1.b74d208e.chunk.js.map": "/weathery/static/js/1.b74d208e.chunk.js.map",
   "runtime~main.js": "/weathery/static/js/runtime~main.339e1877.js",
   "runtime~main.js.map": "/weathery/static/js/runtime~main.339e1877.js.map",
-  "static/css/main.e2bb7a5e.chunk.css.map": "/weathery/static/css/main.e2bb7a5e.chunk.css.map",
+  "static/css/main.805b77cb.chunk.css.map": "/weathery/static/css/main.805b77cb.chunk.css.map",
   "index.html": "/weathery/index.html",
-  "precache-manifest.c4f2f2a5395e42567c18f4d44e734117.js": "/weathery/precache-manifest.c4f2f2a5395e42567c18f4d44e734117.js",
+  "precache-manifest.a72a29134233f41a939e272225854ae5.js": "/weathery/precache-manifest.a72a29134233f41a939e272225854ae5.js",
   "service-worker.js": "/weathery/service-worker.js"
 }
