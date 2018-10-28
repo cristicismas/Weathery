@@ -29,7 +29,7 @@
     margin: auto;
   }
 
-  #main .flex-container .chart-container {
+  #main .flex-container #chart-container {
     margin-bottom: 170px;
   }
 
@@ -39,27 +39,27 @@
 }
 
 @media only screen and (max-width: 1100px) {
-  #main .flex-container .chart-container {
+  #main .flex-container #chart-container {
     margin-bottom: 50px;
   }
 }
 
 @media only screen and (max-width: 750px) {
-  #main .flex-container .chart-container {
+  #main .flex-container #chart-container {
     margin-bottom: -15px;
   }
 }
 
 @media only screen and (max-width: 550px) {
 
-  #main .flex-container .chart-container {
+  #main .flex-container #chart-container {
     width: 95%;
     margin-bottom: -105px;
   }
 }
 
 @media only screen and (max-width: 450px) {
-  #main .flex-container .chart-container {
+  #main .flex-container #chart-container {
     margin-bottom: -200px;
   }
 }

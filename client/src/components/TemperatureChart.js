@@ -65,7 +65,7 @@ class TemperatureChart extends Component {
     };
 
     return (
-      <div className='chart-container'>
+      <div id='chart-container'>
         <Line data={chartData} options={chartOptions} />
       </div>
     );

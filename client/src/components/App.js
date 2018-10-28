@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
+import Navigation from './Navigation';
 import '../css/App.css';
 
 import { DEFAULTS } from '../constants/Defaults.js';
@@ -96,6 +97,7 @@ class App extends Component {
           {...this.state} />
 
         <Footer />
+        <Navigation />
       </div>
     );
   }

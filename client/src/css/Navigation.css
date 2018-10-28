@@ -1,0 +1,35 @@
+#nav {
+  display: none;
+  z-index: 200;
+  background-color: #f5f5f5;
+  border-top: 2px solid #7a7a7a;
+  justify-content: space-around;
+  padding-top: 15px;
+  padding-left: 20px;
+  position: sticky;
+  bottom: 0;
+}
+
+#nav .nav-item svg {
+  margin-bottom: -45px;
+}
+
+#nav .nav-item:first-of-type svg {
+  margin-left: 12px;
+}
+
+#nav .nav-item:nth-of-type(2) svg {
+  margin-left: 4px;
+  margin-bottom: -40px;
+}
+
+#nav a {
+  color: #333;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 750px) {
+  #nav {
+    display: flex;
+  }
+}
