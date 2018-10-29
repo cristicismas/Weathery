@@ -18,21 +18,22 @@ class Navigation extends Component {
       });
     });
   }
+
   render() {
     return (
       <div id='nav'>
         <a href="#weather-cards" className='nav-item'>
-          <Icon icon={ICONS.WEATHER} size={64} color='#444' />
+          <Icon icon={ICONS.WEATHER} size={40} color='#444' />
           <p>Weather</p>
         </a>
 
         <a href="#chart-container" className='nav-item'>
-          <Icon icon={ICONS.CHART} size={64} color='#444' />
+          <Icon icon={ICONS.CHART} size={40} color='#444' />
           <p>Chart</p>
         </a>
 
         <a href="#map" className='nav-item'>
-          <Icon icon={ICONS.MAP} size={64} color='#444' />
+          <Icon icon={ICONS.MAP} size={40} color='#444' />
           <p>Map</p>
         </a>
       </div>

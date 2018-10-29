@@ -4,10 +4,15 @@
   background-color: #f5f5f5;
   border-top: 2px solid #7a7a7a;
   justify-content: space-around;
-  padding-top: 15px;
-  padding-left: 20px;
+  padding-left: 15px;
+  padding-bottom: 10px;
   position: sticky;
   bottom: 0;
+}
+
+#nav a {
+  color: #333;
+  text-decoration: none;
 }
 
 #nav .nav-item svg {
@@ -15,17 +20,20 @@
 }
 
 #nav .nav-item:first-of-type svg {
-  margin-left: 12px;
+  margin-left: 19px;
 }
 
 #nav .nav-item:nth-of-type(2) svg {
-  margin-left: 4px;
+  margin-left: 10px;
   margin-bottom: -40px;
 }
 
-#nav a {
-  color: #333;
-  text-decoration: none;
+#nav .nav-item:nth-of-type(3) svg {
+  margin-left: 6px;
+}
+
+#nav .nav-item p {
+  margin: 16px auto 0;
 }
 
 @media only screen and (max-width: 750px) {
