@@ -3,7 +3,10 @@ const request = require('request');
 
 exports.getForecastWeather = async function(req, res, next) {
   try {
-    request(`https://api.apixu.com/v1/forecast.json?key=${process.env.APIXU_API_KEY}&q=${req.params.query}&days=7`, function(err, response, body) {
+    // Remove diacritics from query (so apixu api wouldn't get confused).
+    const query = req.params.query.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+
+    request(`https://api.apixu.com/v1/forecast.json?key=${process.env.APIXU_API_KEY}&q=${query}&days=7`, function(err, response, body) {
       body = JSON.parse(body);
 
       if (err) {
