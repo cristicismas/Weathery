@@ -7,7 +7,12 @@ exports.getForecastWeather = async function(req, res, next) {
     const query = req.params.query.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 
     request(`https://api.apixu.com/v1/forecast.json?key=${process.env.APIXU_API_KEY}&q=${query}&days=7`, function(err, response, body) {
-      body = JSON.parse(body);
+      try {
+        // If body can't be parsed, the apixu api threw an html error because of invalid characters.
+        body = JSON.parse(body);
+      } catch(err) {
+        return next({ message: "Invalid characters. Please only search using latin characters."});
+      }
 
       if (err) {
         return next(err);
